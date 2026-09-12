@@ -1,0 +1,832 @@
+<title>Myles Achanzar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&display=swap">
+
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --paper:#EFF1F2;
+  --paper-2:#E5E9EB;
+  --paper-3:#D9DEE1;
+  --rule:#C3CBCF;
+  --ink:#0E1417;
+  --ink-2:#5C666B;
+  --cyan:#00A3E0;
+  --cyan-deep:#00688F;
+  --magenta:#E5007D;
+  --plate-c:#00A3E0;
+  --plate-m:#E5007D;
+  --blend:multiply;
+  --focus:#00688F;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --gut:clamp(18px,4.5vw,72px);
+  --maxw:1440px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1215;
+    --paper-2:#141C20;
+    --paper-3:#1C262B;
+    --rule:#2B373D;
+    --ink:#ECF1F2;
+    --ink-2:#8C9BA2;
+    --cyan:#3FC2F5;
+    --cyan-deep:#8ADCFB;
+    --magenta:#FF57AD;
+    --plate-c:#0077A8;
+    --plate-m:#A8005C;
+    --blend:screen;
+    --focus:#8ADCFB;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1215;
+  --paper-2:#141C20;
+  --paper-3:#1C262B;
+  --rule:#2B373D;
+  --ink:#ECF1F2;
+  --ink-2:#8C9BA2;
+  --cyan:#3FC2F5;
+  --cyan-deep:#8ADCFB;
+  --magenta:#FF57AD;
+  --plate-c:#0077A8;
+  --plate-m:#A8005C;
+  --blend:screen;
+  --focus:#8ADCFB;
+}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:clamp(16px,1.05vw,18px);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+.mono{
+  font-family:var(--f-mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{
+  max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);
+  display:flex;align-items:center;gap:20px;
+  height:56px;
+}
+.brand{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 112,"wght" 700;
+  font-size:14px;letter-spacing:-.01em;
+  text-decoration:none;margin-right:auto;
+}
+.brand .dot{color:var(--cyan)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{
+  text-decoration:none;color:var(--ink-2);
+  position:relative;padding-block:4px;
+  transition:color .2s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--cyan);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.status{display:flex;align-items:center;gap:7px;color:var(--ink-2)}
+.pulse{
+  width:6px;height:6px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 0 0 color-mix(in srgb,var(--cyan) 60%,transparent);
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--cyan) 55%,transparent)}
+  70%,100%{box-shadow:0 0 0 7px transparent}
+}
+@media (max-width:720px){
+  .status{display:none}
+  .nav-links{gap:16px}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(48px,9vw,110px) clamp(30px,5vw,54px)}
+.hey{
+  font-size:clamp(19px,2.3vw,28px);
+  margin:0 0 clamp(26px,4vw,44px);
+  color:var(--ink-2);
+  max-width:30ch;
+}
+.hey em{font-style:italic;color:var(--ink)}
+
+.stack{margin:0;display:flex;flex-direction:column}
+.line{
+  border-top:1px solid var(--rule);
+  padding-block:clamp(2px,.7vw,8px);
+  display:flex;align-items:baseline;gap:clamp(10px,2vw,26px);
+}
+.line:last-child{border-bottom:1px solid var(--rule)}
+.line .idx{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
+  color:var(--ink-2);flex:none;width:3.4em;padding-top:.4em;
+}
+.word{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 125,"wght" 800;
+  font-size:clamp(46px,12.4vw,196px);
+  line-height:.92;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  position:relative;
+  display:inline-block;
+}
+.word::before,.word::after{
+  content:attr(data-t);
+  position:absolute;inset:0;
+  mix-blend-mode:var(--blend);
+  pointer-events:none;z-index:-1;
+}
+.word::before{color:var(--plate-c)}
+.word::after{color:var(--plate-m)}
+.word .amp{color:var(--cyan);-webkit-text-stroke:0}
+
+@media (prefers-reduced-motion: no-preference){
+  .word::before{animation:regC 1.05s cubic-bezier(.16,1,.3,1) both}
+  .word::after{animation:regM 1.15s cubic-bezier(.16,1,.3,1) both}
+  .line:nth-child(2) .word::before,.line:nth-child(2) .word::after{animation-delay:.09s}
+  .line:nth-child(3) .word::before,.line:nth-child(3) .word::after{animation-delay:.18s}
+  .stack:hover .word::before{transform:translate(.035em,.012em);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .stack:hover .word::after{transform:translate(-.03em,-.012em);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+}
+@keyframes regC{ from{transform:translate(.11em,.05em)} to{transform:translate(0,0)} }
+@keyframes regM{ from{transform:translate(-.095em,-.042em)} to{transform:translate(0,0)} }
+
+.hero-foot{
+  display:flex;flex-wrap:wrap;gap:18px 40px;
+  align-items:flex-start;justify-content:space-between;
+  margin-top:clamp(22px,3.4vw,40px);
+}
+.hero-foot p{margin:0;max-width:46ch;color:var(--ink-2)}
+.hero-foot p strong{color:var(--ink);font-weight:500}
+
+/* ---------- ticker ---------- */
+.ticker{
+  border-block:1px solid var(--rule);
+  overflow:hidden;
+  margin-top:clamp(34px,5vw,64px);
+  background:var(--paper-2);
+}
+.ticker-track{display:flex;width:max-content}
+@media (prefers-reduced-motion: no-preference){
+  .ticker-track{animation:slide 34s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+}
+@keyframes slide{ to{transform:translateX(-50%)} }
+.ticker-track span{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 118,"wght" 600;
+  text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(13px,1.5vw,17px);
+  padding:11px clamp(14px,2vw,26px);
+  display:inline-flex;align-items:center;gap:clamp(14px,2vw,26px);
+  white-space:nowrap;color:var(--ink-2);
+}
+.ticker-track span::after{content:"";width:5px;height:5px;background:var(--cyan);border-radius:50%;flex:none}
+
+/* ---------- section scaffolding ---------- */
+section{padding-block:clamp(58px,8vw,124px)}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:12px;margin-bottom:clamp(28px,4vw,52px);
+}
+.sec-head h2{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 108,"wght" 700;
+  font-size:clamp(24px,3.4vw,44px);
+  letter-spacing:-.025em;margin:0;text-wrap:balance;
+}
+.sec-head .mono{color:var(--ink-2)}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1.35fr .85fr;gap:clamp(28px,5vw,80px);align-items:start}
+.about-lede{
+  font-size:clamp(20px,2.2vw,29px);
+  line-height:1.34;margin:0 0 1.1em;text-wrap:pretty;
+}
+.about-lede b{font-weight:500;font-style:italic}
+.about p{margin:0 0 1em;color:var(--ink-2);max-width:62ch}
+.spec{border-top:1px solid var(--ink);display:flex;flex-direction:column}
+.spec div{
+  display:flex;gap:14px;justify-content:space-between;
+  padding-block:9px;border-bottom:1px solid var(--rule);
+}
+.spec dt{color:var(--ink-2);flex:none}
+.spec dd{margin:0;text-align:right;font-family:var(--f-mono);font-size:12px;letter-spacing:.02em}
+@media (max-width:860px){ .about{grid-template-columns:1fr} }
+
+/* ---------- work ---------- */
+.cards{display:flex;flex-direction:column;gap:clamp(26px,4vw,56px)}
+.card{border-top:1px solid var(--ink);padding-top:clamp(16px,2vw,26px)}
+.card-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(18px,3vw,48px);align-items:end;
+}
+@media (max-width:860px){ .card-top{grid-template-columns:1fr} }
+
+.card-meta{display:flex;flex-direction:column;gap:clamp(12px,1.6vw,20px);padding-bottom:6px}
+.card-meta h3{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 116,"wght" 750;
+  font-size:clamp(30px,4.6vw,62px);
+  line-height:.98;letter-spacing:-.03em;margin:0;text-transform:uppercase;
+}
+.card-meta .kind{color:var(--ink-2);margin:0;max-width:44ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid var(--rule);padding:4px 8px;color:var(--ink-2);
+}
+
+/* generated plate art */
+.plate{
+  position:relative;aspect-ratio:4/3;max-width:100%;
+  background:var(--paper-2);border:1px solid var(--rule);
+  overflow:hidden;isolation:isolate;
+}
+.plate svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.plate .halftone{
+  position:absolute;inset:0;pointer-events:none;z-index:3;
+  background-image:radial-gradient(circle at center, color-mix(in srgb,var(--ink) 26%,transparent) 1px, transparent 1.35px);
+  background-size:6px 6px;
+  opacity:.4;mix-blend-mode:var(--blend);
+}
+.plate .sep-c,.plate .sep-m{
+  position:absolute;inset:0;z-index:2;mix-blend-mode:var(--blend);
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s;
+  opacity:0;
+}
+.card:hover .plate .sep-c,.card:focus-within .plate .sep-c{transform:translate(9px,5px);opacity:.9}
+.card:hover .plate .sep-m,.card:focus-within .plate .sep-m{transform:translate(-8px,-5px);opacity:.9}
+@media (prefers-reduced-motion: reduce){
+  .plate .sep-c,.plate .sep-m{transition:none}
+  .card:hover .plate .sep-c,.card:hover .plate .sep-m{transform:none;opacity:.5}
+}
+.plate .stamp{
+  position:absolute;left:10px;bottom:8px;z-index:4;
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-2);
+}
+
+/* expandable detail */
+.expand{
+  margin-top:clamp(14px,2vw,22px);
+  display:flex;align-items:center;gap:10px;
+  background:none;border:0;padding:8px 0;cursor:pointer;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);
+}
+.expand .plus{
+  width:18px;height:18px;flex:none;position:relative;
+  border:1px solid var(--ink);
+}
+.expand .plus::before,.expand .plus::after{
+  content:"";position:absolute;background:var(--ink);
+  left:50%;top:50%;transform:translate(-50%,-50%);
+}
+.expand .plus::before{width:8px;height:1px}
+.expand .plus::after{width:1px;height:8px;transition:transform .3s}
+.expand[aria-expanded="true"] .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.expand:hover{color:var(--cyan-deep)}
+
+.detail{display:none;padding-top:clamp(16px,2vw,26px)}
+.detail[data-open="true"]{display:block}
+.detail-grid{
+  display:grid;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+}
+.detail-grid > div{background:var(--paper);padding:16px 18px}
+.detail-grid h4{
+  margin:0 0 7px;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:400;
+}
+.detail-grid p{margin:0;font-size:15px;line-height:1.45}
+.soon{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:14px;font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--magenta);
+}
+
+/* ---------- reel ---------- */
+.reel{border-top:1px solid var(--ink)}
+.reel-row{
+  display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.4fr) 5.5em;
+  gap:clamp(10px,2vw,28px);align-items:baseline;
+  padding-block:clamp(11px,1.4vw,17px);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  transition:padding-left .38s cubic-bezier(.2,.8,.2,1),color .25s;
+  padding-left:0;
+}
+.reel-row::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:100%;
+  background:var(--paper-2);
+  transform:scaleX(0);transform-origin:left;z-index:-1;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1);
+}
+.reel-row:hover{padding-left:clamp(10px,1.6vw,22px)}
+.reel-row:hover::before{transform:scaleX(1)}
+.reel-row .client{
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 104,"wght" 600;
+  font-size:clamp(17px,2.1vw,27px);letter-spacing:-.02em;
+}
+.reel-row:hover .client{color:var(--cyan-deep)}
+.reel-row .disc{color:var(--ink-2);font-size:15px}
+.reel-row .yr{
+  font-family:var(--f-mono);font-size:12px;color:var(--ink-2);
+  text-align:right;font-variant-numeric:tabular-nums;
+}
+@media (max-width:640px){
+  .reel-row{grid-template-columns:1fr 4.5em;row-gap:2px}
+  .reel-row .disc{grid-column:1/2}
+  .reel-row .yr{grid-row:1/2;grid-column:2/3}
+}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--ink)}
+.cta{
+  display:block;text-decoration:none;
+  font-family:var(--f-display);
+  font-variation-settings:"wdth" 122,"wght" 800;
+  font-size:clamp(38px,10.5vw,164px);
+  line-height:.9;letter-spacing:-.04em;text-transform:uppercase;
+  margin-block:clamp(24px,4vw,44px) clamp(18px,2.6vw,30px);
+  position:relative;
+}
+.cta span{display:block;position:relative}
+.cta span::before,.cta span::after{
+  content:attr(data-t);position:absolute;inset:0;z-index:-1;
+  mix-blend-mode:var(--blend);
+  transform:translate(0,0);
+  transition:transform .55s cubic-bezier(.2,.8,.2,1);
+}
+.cta span::before{color:var(--plate-c)}
+.cta span::after{color:var(--plate-m)}
+.cta:hover span::before{transform:translate(.055em,.022em)}
+.cta:hover span::after{transform:translate(-.05em,-.02em)}
+@media (prefers-reduced-motion: reduce){
+  .cta span::before,.cta span::after{transition:none}
+}
+
+.foot-grid{
+  display:flex;flex-wrap:wrap;gap:24px 48px;
+  justify-content:space-between;align-items:flex-end;
+  padding-bottom:clamp(26px,4vw,48px);
+}
+.links{display:flex;flex-wrap:wrap;gap:8px 24px}
+.links a{
+  text-decoration:none;border-bottom:1px solid var(--rule);
+  padding-bottom:2px;transition:border-color .2s,color .2s;
+}
+.links a:hover{border-color:var(--cyan);color:var(--cyan-deep)}
+
+.swatches{display:flex;gap:1px}
+.sw{width:clamp(42px,6vw,62px);height:clamp(42px,6vw,62px);position:relative}
+.sw span{
+  position:absolute;left:5px;bottom:4px;
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;
+}
+.sw-c{background:#00A3E0} .sw-c span{color:#012A3A}
+.sw-m{background:#E5007D} .sw-m span{color:#2A0016}
+.sw-y{background:#FFE500} .sw-y span{color:#2A2600}
+.sw-k{background:#0E1417} .sw-k span{color:#8C9BA2}
+
+.colophon{
+  border-top:1px solid var(--rule);
+  padding-block:16px 30px;
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  color:var(--ink-2);
+}
+
+/* ---------- custom cursor ---------- */
+.cursor{
+  position:fixed;top:0;left:0;z-index:99;pointer-events:none;
+  width:26px;height:26px;margin:-13px 0 0 -13px;
+  opacity:0;transition:opacity .3s,width .3s,height .3s,margin .3s;
+  will-change:transform;
+}
+.cursor::before,.cursor::after{
+  content:"";position:absolute;background:var(--cyan);
+}
+.cursor::before{left:0;right:0;top:50%;height:1px}
+.cursor::after{top:0;bottom:0;left:50%;width:1px}
+.cursor i{
+  position:absolute;inset:7px;border:1px solid var(--cyan);border-radius:50%;
+  transition:inset .3s;
+}
+html.has-cursor .cursor{opacity:1}
+html.cursor-lg .cursor{width:56px;height:56px;margin:-28px 0 0 -28px}
+html.cursor-lg .cursor i{inset:16px}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){ .cursor{display:none} }
+
+/* ---------- scroll reveal (JS-gated so base HTML is visible) ---------- */
+html.js-motion .rv{opacity:.28;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+html.js-motion .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html.js-motion .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+
+<div class="cursor" aria-hidden="true"><i></i></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">Myles Achanzar<span class="dot">.</span></a>
+    <div class="nav-links mono">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="status mono"><span class="pulse"></span><span>San Francisco — <span id="clock">—</span></span></div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <header class="hero wrap">
+    <p class="hey">Hey! I&rsquo;m <em>Myles</em> &mdash; a graphic designer who builds identities that survive contact with a printing press.</p>
+
+    <h1 class="stack">
+      <span class="line"><span class="idx">Ⅰ</span><span class="word" data-t="Graphic">Graphic</span></span>
+      <span class="line"><span class="idx">Ⅱ</span><span class="word" data-t="Design &amp;">Design&nbsp;<span class="amp">&amp;</span></span></span>
+      <span class="line"><span class="idx">Ⅲ</span><span class="word" data-t="Direction">Direction</span></span>
+    </h1>
+
+    <div class="hero-foot">
+      <p>Identity systems, packaging, and type for independent brands. Eight years of it &mdash; four in-house, four on my own. <strong>Currently taking projects for early 2027.</strong></p>
+      <p class="mono" style="color:var(--ink-2);max-width:20ch">Scroll for selected work &darr;</p>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Identity Systems</span><span>Packaging</span><span>Type Design</span><span>Editorial</span><span>Wayfinding</span><span>Art Direction</span><span>Print Production</span>
+      <span>Identity Systems</span><span>Packaging</span><span>Type Design</span><span>Editorial</span><span>Wayfinding</span><span>Art Direction</span><span>Print Production</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
+    <div class="sec-head rv">
+      <h2>About me</h2>
+      <p class="mono" style="margin:0">§ 01 — Who / How</p>
+    </div>
+
+    <div class="about rv">
+      <div>
+        <p class="about-lede">I design the stuff a brand actually has to live inside &mdash; the wordmark, the grid, the spec sheet, and the <b>one page of rules</b> that keeps it recognizable after I leave.</p>
+        <p>Most of my work starts on paper and ends on a press check. I like the constraints: four plates, one stock, a trim size that can&rsquo;t change. Those limits are usually where the idea shows up.</p>
+        <p>Before going independent I ran brand at a small studio in San Francisco, where I learned that a system nobody can operate isn&rsquo;t a system. So I ship working files, not just presentations &mdash; libraries, tokens, and a guide short enough that people read it.</p>
+        <p>Outside of client work I draw type, print a small risograph zine twice a year, and teach a typography night class at the community college.</p>
+      </div>
+
+      <dl class="spec">
+        <div><dt>Based</dt><dd>San Francisco, CA</dd></div>
+        <div><dt>Practice</dt><dd>Independent, est. 2022</dd></div>
+        <div><dt>Disciplines</dt><dd>Identity / Packaging / Type</dd></div>
+        <div><dt>Tools</dt><dd>Glyphs, InDesign, Figma</dd></div>
+        <div><dt>Press</dt><dd>Offset, Riso, Screen</dd></div>
+        <div><dt>Teaching</dt><dd>Typography II, evenings</dd></div>
+        <div><dt>Availability</dt><dd>Q1 2027</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="wrap">
+    <div class="sec-head rv">
+      <h2>Selected work</h2>
+      <p class="mono" style="margin:0">§ 02 — Three case studies</p>
+    </div>
+
+    <div class="cards">
+
+      <!-- CARD 1 -->
+      <article class="card rv">
+        <div class="card-top">
+          <div class="card-meta">
+            <h3>Marrow<br>Press</h3>
+            <p class="kind">A complete identity and typographic system for an independent publisher of translated poetry &mdash; wordmark, a two-family type pairing, and a spine grid that holds across a 40-title backlist.</p>
+            <div class="tags">
+              <span class="tag">Identity</span><span class="tag">Type System</span><span class="tag">Book Design</span><span class="tag">2025</span>
+            </div>
+          </div>
+
+          <div class="plate" data-cursor>
+            <svg viewBox="0 0 400 300" role="img" aria-label="Type specimen: a large letterform sitting on baseline and x-height rules">
+              <rect width="400" height="300" style="fill:var(--paper-2);"></rect>
+              <g stroke-width="1" style="stroke:var(--rule);">
+                <line x1="0" y1="78" x2="400" y2="78"></line>
+                <line x1="0" y1="150" x2="400" y2="150"></line>
+                <line x1="0" y1="232" x2="400" y2="232"></line>
+                <line x1="64" y1="0" x2="64" y2="300"></line>
+                <line x1="336" y1="0" x2="336" y2="300"></line>
+              </g>
+              <text x="200" y="232" text-anchor="middle"
+                    style="fill:var(--ink);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
+              <text x="72" y="70" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">CAP 154</text>
+              <text x="72" y="144" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">X-HT 82</text>
+              <text x="342" y="238" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">BASE</text>
+            </svg>
+            <svg class="sep-c" viewBox="0 0 400 300" aria-hidden="true">
+              <text x="200" y="232" text-anchor="middle"
+                    style="fill:var(--plate-c);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
+            </svg>
+            <svg class="sep-m" viewBox="0 0 400 300" aria-hidden="true">
+              <text x="200" y="232" text-anchor="middle"
+                    style="fill:var(--plate-m);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
+            </svg>
+            <div class="halftone"></div>
+            <div class="stamp">Specimen — 1/4</div>
+          </div>
+        </div>
+
+        <button class="expand" aria-expanded="false" aria-controls="d1" data-cursor>
+          <span class="plus"></span> Open case study
+        </button>
+        <div class="detail" id="d1" data-open="false">
+          <div class="detail-grid">
+            <div><h4>The problem</h4><p>Forty titles, four designers, no shared spine logic. Bookstores were shelving the backlist as if it were four different publishers.</p></div>
+            <div><h4>What I made</h4><p>A wordmark drawn from a 19th-century Czech foundry specimen, a display/text pairing, and a three-zone spine grid keyed to page count.</p></div>
+            <div><h4>Specs</h4><p>198 × 129 mm trim. Munken Print Cream 90gsm. Two-color offset: black + a single spot per series.</p></div>
+            <div><h4>Outcome</h4><p>Twelve titles reissued in the system so far. The spine grid is now the template every freelance cover designer gets on day one.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="card rv">
+        <div class="card-top">
+          <div class="card-meta">
+            <h3>Ovenbird<br>Coffee</h3>
+            <p class="kind">Brand and packaging for a small-batch roaster &mdash; a label system where one die line and a rotating spot color carry twenty-plus single origins without a reprint of the base stock.</p>
+            <div class="tags">
+              <span class="tag">Identity</span><span class="tag">Packaging</span><span class="tag">Illustration</span><span class="tag">2024</span>
+            </div>
+          </div>
+
+          <div class="plate" data-cursor>
+            <svg viewBox="0 0 400 300" role="img" aria-label="Coffee bag label: concentric arcs above a stacked lockup">
+              <rect width="400" height="300" style="fill:var(--paper-2);"></rect>
+              <rect x="118" y="26" width="164" height="248" fill="none" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--rule);"></rect>
+              <g fill="none" stroke-width="7" style="stroke:var(--ink);">
+                <circle cx="200" cy="128" r="26"></circle>
+                <path d="M158 128 a42 42 0 0 1 84 0"></path>
+                <path d="M142 128 a58 58 0 0 1 116 0"></path>
+              </g>
+              <rect x="186" y="152" width="28" height="7" style="fill:var(--ink);"></rect>
+              <text x="200" y="206" text-anchor="middle"
+                    style="fill:var(--ink);font-family:var(--f-display);font-variation-settings:'wdth' 120,'wght' 800;font-size:34px;letter-spacing:-.02em">OVENBIRD</text>
+              <text x="200" y="226" text-anchor="middle"
+                    style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.22em">SINGLE ORIGIN</text>
+              <text x="200" y="252" text-anchor="middle"
+                    style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.14em">HUILA · 340 g</text>
+            </svg>
+            <svg class="sep-c" viewBox="0 0 400 300" aria-hidden="true">
+              <g fill="none" stroke-width="7" style="stroke:var(--plate-c);">
+                <circle cx="200" cy="128" r="26"></circle>
+                <path d="M158 128 a42 42 0 0 1 84 0"></path>
+                <path d="M142 128 a58 58 0 0 1 116 0"></path>
+              </g>
+            </svg>
+            <svg class="sep-m" viewBox="0 0 400 300" aria-hidden="true">
+              <text x="200" y="206" text-anchor="middle"
+                    style="fill:var(--plate-m);font-family:var(--f-display);font-variation-settings:'wdth' 120,'wght' 800;font-size:34px;letter-spacing:-.02em">OVENBIRD</text>
+            </svg>
+            <div class="halftone"></div>
+            <div class="stamp">Die line — 340 g</div>
+          </div>
+        </div>
+
+        <button class="expand" aria-expanded="false" aria-controls="d2" data-cursor>
+          <span class="plus"></span> Open case study
+        </button>
+        <div class="detail" id="d2" data-open="false">
+          <div class="detail-grid">
+            <div><h4>The problem</h4><p>Every new origin meant a new bag order and 3,000 units of minimum. Small lots were going out in unlabeled kraft.</p></div>
+            <div><h4>What I made</h4><p>One printed base bag, one die-cut label, and a spot-color index &mdash; origin identified by color and a letterpress code rather than new artwork.</p></div>
+            <div><h4>Specs</h4><p>340 g and 1 kg formats. Uncoated label stock, 2 PMS + blind deboss. Roaster prints labels in-house on a tabletop press.</p></div>
+            <div><h4>Outcome</h4><p>Minimum order dropped from 3,000 bags to 250 labels. Twenty-three origins have run through the system without a single new die.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="card rv">
+        <div class="card-top">
+          <div class="card-meta">
+            <h3>Cascadia<br>Trail Alliance</h3>
+            <p class="kind">Wayfinding and exhibition graphics for 140 miles of shared-use trail &mdash; a sign family legible at 40 km/h, weatherproof, and installable by volunteers with a cordless drill.</p>
+            <div class="tags">
+              <span class="tag">Wayfinding</span><span class="tag">Environmental</span><span class="tag">Iconography</span><span class="tag">2024</span>
+            </div>
+          </div>
+
+          <div class="plate" data-cursor>
+            <svg viewBox="0 0 400 300" role="img" aria-label="Trail wayfinding sign with directional chevron and ridge glyph">
+              <rect width="400" height="300" style="fill:var(--paper-2);"></rect>
+              <g stroke-width="1" stroke-dasharray="3 4" style="stroke:var(--rule);">
+                <line x1="0" y1="150" x2="400" y2="150"></line>
+                <line x1="200" y1="0" x2="200" y2="300"></line>
+              </g>
+              <rect x="54" y="72" width="292" height="128" style="fill:var(--ink);"></rect>
+              <path d="M300 100 l34 36 -34 36 z" style="fill:var(--paper-2);"></path>
+              <path d="M78 168 l30 -40 22 27 18 -22 34 35 z" style="fill:var(--paper-2);"></path>
+              <text x="78" y="112"
+                    style="fill:var(--paper-2);font-family:var(--f-display);font-variation-settings:'wdth' 112,'wght' 750;font-size:26px;letter-spacing:-.01em">RIDGE LOOP</text>
+              <text x="78" y="230" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.14em">4.2 MI · MODERATE · E-3</text>
+              <text x="78" y="250" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.14em">ALUM. 3 MM · REFLECTIVE VINYL</text>
+            </svg>
+            <svg class="sep-c" viewBox="0 0 400 300" aria-hidden="true">
+              <rect x="54" y="72" width="292" height="128" style="fill:var(--plate-c);"></rect>
+            </svg>
+            <svg class="sep-m" viewBox="0 0 400 300" aria-hidden="true">
+              <path d="M300 100 l34 36 -34 36 z" style="fill:var(--plate-m);"></path>
+              <path d="M78 168 l30 -40 22 27 18 -22 34 35 z" style="fill:var(--plate-m);"></path>
+            </svg>
+            <div class="halftone"></div>
+            <div class="stamp">Sign family — E-3</div>
+          </div>
+        </div>
+
+        <button class="expand" aria-expanded="false" aria-controls="d3" data-cursor>
+          <span class="plus"></span> Open case study
+        </button>
+        <div class="detail" id="d3" data-open="false">
+          <div class="detail-grid">
+            <div><h4>The problem</h4><p>Four jurisdictions, four sign standards, and a trail that crosses between them eleven times. Riders were turning around at the seams.</p></div>
+            <div><h4>What I made</h4><p>A single sign family with a shared header band, a 14-icon set drawn on one grid, and a junction-code scheme that doubles as the 911 locator.</p></div>
+            <div><h4>Specs</h4><p>3 mm aluminum, reflective vinyl, three sizes off one template. Volunteer install guide fits on two sides of a letter sheet.</p></div>
+            <div><h4>Outcome</h4><p>Phase one covers 62 of 140 miles. Two of the four jurisdictions have adopted the icon set for trails outside the corridor.</p></div>
+          </div>
+          <span class="soon">◆ Full case study coming soon</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- REEL -->
+  <section id="reel" class="wrap">
+    <div class="sec-head rv">
+      <h2>The highlight reel</h2>
+      <p class="mono" style="margin:0">§ 03 — Everything else</p>
+    </div>
+
+    <div class="reel rv">
+      <div class="reel-row"><span class="client">Half Step Records</span><span class="disc">Sleeve system &amp; label identity</span><span class="yr">2026</span></div>
+      <div class="reel-row"><span class="client">Fernwood Botanical</span><span class="disc">Signage &amp; seasonal print</span><span class="yr">2026</span></div>
+      <div class="reel-row"><span class="client">Tidewell Ferry Co.</span><span class="disc">Livery &amp; ticketing system</span><span class="yr">2025</span></div>
+      <div class="reel-row"><span class="client">Nine Mile Provisions</span><span class="disc">Packaging range, 14 SKUs</span><span class="yr">2025</span></div>
+      <div class="reel-row"><span class="client">Ledger &amp; Line</span><span class="disc">Identity &amp; stationery</span><span class="yr">2025</span></div>
+      <div class="reel-row"><span class="client">Overtone Festival</span><span class="disc">Poster series &amp; art direction</span><span class="yr">2024</span></div>
+      <div class="reel-row"><span class="client">Ampersand Bindery</span><span class="disc">Wordmark &amp; letterpress suite</span><span class="yr">2024</span></div>
+      <div class="reel-row"><span class="client">Quarter Rest Piano</span><span class="disc">Identity &amp; wayfinding</span><span class="yr">2024</span></div>
+      <div class="reel-row"><span class="client">The Hollow Journal</span><span class="disc">Editorial redesign, 4 issues</span><span class="yr">2023</span></div>
+      <div class="reel-row"><span class="client">Birchrow Cider</span><span class="disc">Label system &amp; can wraps</span><span class="yr">2023</span></div>
+      <div class="reel-row"><span class="client">Salt Flat Athletic</span><span class="disc">Brand refresh &amp; kit graphics</span><span class="yr">2023</span></div>
+      <div class="reel-row"><span class="client">Meridian Housing Trust</span><span class="disc">Annual report &amp; data graphics</span><span class="yr">2022</span></div>
+      <div class="reel-row"><span class="client">Cold Spring Ceramics</span><span class="disc">Identity &amp; stamp design</span><span class="yr">2022</span></div>
+      <div class="reel-row"><span class="client">Rivet Bicycle Works</span><span class="disc">Decal system &amp; catalog</span><span class="yr">2022</span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT -->
+<footer id="contact" class="contact">
+  <div class="wrap">
+    <a class="cta" href="mailto:studio@mylesachanzar.com" data-cursor>
+      <span data-t="Let's make">Let&rsquo;s make</span>
+      <span data-t="something">something</span>
+    </a>
+
+    <div class="foot-grid">
+      <div>
+        <p class="mono" style="color:var(--ink-2);margin:0 0 10px">Currently — independent practice, San Francisco CA</p>
+        <div class="links">
+          <a href="mailto:studio@mylesachanzar.com">studio@mylesachanzar.com</a>
+          <a href="#work">Instagram</a>
+          <a href="#work">Are.na</a>
+          <a href="#work">LinkedIn</a>
+        </div>
+      </div>
+      <div class="swatches" aria-hidden="true">
+        <div class="sw sw-c"><span>C</span></div>
+        <div class="sw sw-m"><span>M</span></div>
+        <div class="sw sw-y"><span>Y</span></div>
+        <div class="sw sw-k"><span>K</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="colophon mono">
+      <span>Myles Achanzar — Graphic Design &amp; Direction</span>
+      <span>Set in Archivo, Newsreader &amp; DM Mono</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* local time in the studio's timezone */
+  var clock = document.getElementById('clock');
+  function tick(){
+    try{
+      clock.textContent = new Intl.DateTimeFormat('en-US',{
+        hour:'numeric', minute:'2-digit', timeZone:'America/Los_Angeles'
+      }).format(new Date());
+    }catch(e){ clock.textContent = ''; }
+  }
+  tick(); setInterval(tick, 15000);
+
+  /* expandable case studies */
+  document.querySelectorAll('.expand').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.setAttribute('data-open', String(!open));
+      btn.lastChild.textContent = open ? ' Open case study' : ' Close case study';
+    });
+  });
+
+  /* scroll reveal — class is added only once JS runs, so the page is
+     fully readable with JS off or before this executes */
+  if(!reduced && 'IntersectionObserver' in window){
+    root.classList.add('js-motion');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px', threshold:0.08});
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  }
+
+  /* registration-mark cursor */
+  var fine = window.matchMedia('(pointer:fine)').matches;
+  if(fine && !reduced){
+    var cur = document.querySelector('.cursor');
+    var x = innerWidth/2, y = innerHeight/2, cx = x, cy = y;
+    addEventListener('mousemove', function(e){
+      x = e.clientX; y = e.clientY;
+      root.classList.add('has-cursor');
+    }, {passive:true});
+    (function raf(){
+      cx += (x - cx) * 0.18;
+      cy += (y - cy) * 0.18;
+      cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+      requestAnimationFrame(raf);
+    })();
+    document.querySelectorAll('a, button, [data-cursor]').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ root.classList.add('cursor-lg'); });
+      el.addEventListener('mouseleave', function(){ root.classList.remove('cursor-lg'); });
+    });
+  }
+})();
+</script>
