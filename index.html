@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Myles Achanzar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -300,11 +301,13 @@ section{padding-block:clamp(58px,8vw,124px)}
   .plate .sep-c,.plate .sep-m{transition:none}
   .card:hover .plate .sep-c,.card:hover .plate .sep-m{transform:none;opacity:.5}
 }
+.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .plate .stamp{
   position:absolute;left:10px;bottom:8px;z-index:4;
   font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-2);
 }
+.plate img ~ .stamp{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 
 /* expandable detail */
 .expand{
@@ -340,6 +343,8 @@ section{padding-block:clamp(58px,8vw,124px)}
   letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:400;
 }
 .detail-grid p{margin:0;font-size:15px;line-height:1.45}
+.gallery{columns:3 220px;column-gap:8px}
+.gallery img{width:100%;display:block;margin-bottom:8px;break-inside:avoid;border:1px solid var(--rule)}
 .soon{
   display:inline-flex;align-items:center;gap:8px;
   margin-top:14px;font-family:var(--f-mono);font-size:11px;
@@ -545,39 +550,17 @@ html.js-motion .rv.in{opacity:1;transform:none}
       <article class="card rv">
         <div class="card-top">
           <div class="card-meta">
-            <h3>Marrow<br>Press</h3>
-            <p class="kind">A complete identity and typographic system for an independent publisher of translated poetry &mdash; wordmark, a two-family type pairing, and a spine grid that holds across a 40-title backlist.</p>
+            <h3>Wolvesden</h3>
+            <p class="kind">Streetwear for Wolvesden &mdash; the embroidered wordmark snapback, the W monogram, and the shoots that launched them.</p>
             <div class="tags">
-              <span class="tag">Identity</span><span class="tag">Type System</span><span class="tag">Book Design</span><span class="tag">2025</span>
+              <span class="tag">Apparel</span><span class="tag">Headwear</span><span class="tag">Monogram</span>
             </div>
           </div>
 
           <div class="plate" data-cursor>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Type specimen: a large letterform sitting on baseline and x-height rules">
-              <rect width="400" height="300" style="fill:var(--paper-2);"></rect>
-              <g stroke-width="1" style="stroke:var(--rule);">
-                <line x1="0" y1="78" x2="400" y2="78"></line>
-                <line x1="0" y1="150" x2="400" y2="150"></line>
-                <line x1="0" y1="232" x2="400" y2="232"></line>
-                <line x1="64" y1="0" x2="64" y2="300"></line>
-                <line x1="336" y1="0" x2="336" y2="300"></line>
-              </g>
-              <text x="200" y="232" text-anchor="middle"
-                    style="fill:var(--ink);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
-              <text x="72" y="70" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">CAP 154</text>
-              <text x="72" y="144" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">X-HT 82</text>
-              <text x="342" y="238" style="fill:var(--ink-2);font-family:var(--f-mono);font-size:10px;letter-spacing:.1em">BASE</text>
-            </svg>
-            <svg class="sep-c" viewBox="0 0 400 300" aria-hidden="true">
-              <text x="200" y="232" text-anchor="middle"
-                    style="fill:var(--plate-c);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
-            </svg>
-            <svg class="sep-m" viewBox="0 0 400 300" aria-hidden="true">
-              <text x="200" y="232" text-anchor="middle"
-                    style="fill:var(--plate-m);font-family:var(--f-display);font-variation-settings:'wdth' 125,'wght' 800;font-size:196px;letter-spacing:-.04em">Aa</text>
-            </svg>
+            <img src="work/wolvesden/snapback-fence.jpg" alt="Black snapback with the Wolvesden wordmark embroidered in white, hung on a chain-link fence">
             <div class="halftone"></div>
-            <div class="stamp">Specimen — 1/4</div>
+            <div class="stamp">Snapback — 1/6</div>
           </div>
         </div>
 
@@ -585,11 +568,12 @@ html.js-motion .rv.in{opacity:1;transform:none}
           <span class="plus"></span> Open case study
         </button>
         <div class="detail" id="d1" data-open="false">
-          <div class="detail-grid">
-            <div><h4>The problem</h4><p>Forty titles, four designers, no shared spine logic. Bookstores were shelving the backlist as if it were four different publishers.</p></div>
-            <div><h4>What I made</h4><p>A wordmark drawn from a 19th-century Czech foundry specimen, a display/text pairing, and a three-zone spine grid keyed to page count.</p></div>
-            <div><h4>Specs</h4><p>198 × 129 mm trim. Munken Print Cream 90gsm. Two-color offset: black + a single spot per series.</p></div>
-            <div><h4>Outcome</h4><p>Twelve titles reissued in the system so far. The spine grid is now the template every freelance cover designer gets on day one.</p></div>
+          <div class="gallery">
+            <img src="work/wolvesden/portrait-studio.jpg" alt="Black and white portrait of a tattooed man in a Wolvesden snapback, hands raised" loading="lazy">
+            <img src="work/wolvesden/dummy-crate.jpg" alt="Ventriloquist dummy on a wooden crate beside a Wolvesden snapback, lit green" loading="lazy">
+            <img src="work/wolvesden/portrait-monogram.webp" alt="Man in sunglasses wearing a Wolvesden snapback and a black tee with the white W monogram" loading="lazy">
+            <img src="work/wolvesden/balaclava.jpg" alt="Black and white photo of a person in a balaclava tipping a W monogram snapback, wearing a matching hoodie" loading="lazy">
+            <img src="work/wolvesden/dummy-attic.jpg" alt="Ventriloquist dummy in an attic next to a Wolvesden snapback with yellow-green embroidery" loading="lazy">
           </div>
         </div>
       </article>
