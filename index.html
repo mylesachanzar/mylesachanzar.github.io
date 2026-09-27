@@ -302,6 +302,9 @@ section{padding-block:clamp(58px,8vw,124px)}
   .card:hover .plate .sep-c,.card:hover .plate .sep-m{transform:none;opacity:.5}
 }
 .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* vertical video letterboxed on black, matching its own background */
+.plate video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.plate video ~ .stamp{color:#fff}
 .plate .stamp{
   position:absolute;left:10px;bottom:8px;z-index:4;
   font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;
@@ -489,7 +492,7 @@ html.js-motion .rv.in{opacity:1;transform:none}
 <main id="top">
 
   <header class="hero wrap">
-    <p class="hey">Hey! I&rsquo;m <em>Myles</em> &mdash; a graphic designer who builds identities that survive contact with a printing press.</p>
+    <p class="hey">Hey! I&rsquo;m <em>Myles</em> &mdash; a graphic designer making bold, memorable visual identities.</p>
 
     <h1 class="stack">
       <span class="line"><span class="idx">Ⅰ</span><span class="word" data-t="Graphic">Graphic</span></span>
@@ -498,15 +501,15 @@ html.js-motion .rv.in{opacity:1;transform:none}
     </h1>
 
     <div class="hero-foot">
-      <p>Identity systems, packaging, and type for independent brands. Eight years of it &mdash; four in-house, four on my own. <strong>Currently taking projects for early 2027.</strong></p>
+      <p>Branding, packaging, social media, and AI-powered creative. <strong>15+ years of it.</strong></p>
       <p class="mono" style="color:var(--ink-2);max-width:20ch">Scroll for selected work &darr;</p>
     </div>
   </header>
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Identity Systems</span><span>Packaging</span><span>Type Design</span><span>Editorial</span><span>Wayfinding</span><span>Art Direction</span><span>Print Production</span>
-      <span>Identity Systems</span><span>Packaging</span><span>Type Design</span><span>Editorial</span><span>Wayfinding</span><span>Art Direction</span><span>Print Production</span>
+      <span>Branding</span><span>Packaging</span><span>Social Media</span><span>AI-Powered Creative</span><span>Visual Identity</span>
+      <span>Branding</span><span>Packaging</span><span>Social Media</span><span>AI-Powered Creative</span><span>Visual Identity</span>
     </div>
   </div>
 
@@ -519,20 +522,15 @@ html.js-motion .rv.in{opacity:1;transform:none}
 
     <div class="about rv">
       <div>
-        <p class="about-lede">I design the stuff a brand actually has to live inside &mdash; the wordmark, the grid, the spec sheet, and the <b>one page of rules</b> that keeps it recognizable after I leave.</p>
-        <p>Most of my work starts on paper and ends on a press check. I like the constraints: four plates, one stock, a trim size that can&rsquo;t change. Those limits are usually where the idea shows up.</p>
-        <p>Before going independent I ran brand at a small studio in San Francisco, where I learned that a system nobody can operate isn&rsquo;t a system. So I ship working files, not just presentations &mdash; libraries, tokens, and a guide short enough that people read it.</p>
-        <p>Outside of client work I draw type, print a small risograph zine twice a year, and teach a typography night class at the community college.</p>
+        <p class="about-lede">Myles is a San Francisco-based graphic designer specializing in <b>branding, packaging, social media, and AI-powered creative</b>.</p>
+        <p>With 15+ years of experience, he creates bold, memorable visual identities for brands across cannabis, lifestyle, sports, food, and consumer products.</p>
       </div>
 
       <dl class="spec">
         <div><dt>Based</dt><dd>San Francisco, CA</dd></div>
-        <div><dt>Practice</dt><dd>Independent, est. 2022</dd></div>
-        <div><dt>Disciplines</dt><dd>Identity / Packaging / Type</dd></div>
-        <div><dt>Tools</dt><dd>Glyphs, InDesign, Figma</dd></div>
-        <div><dt>Press</dt><dd>Offset, Riso, Screen</dd></div>
-        <div><dt>Teaching</dt><dd>Typography II, evenings</dd></div>
-        <div><dt>Availability</dt><dd>Q1 2027</dd></div>
+        <div><dt>Experience</dt><dd>15+ years</dd></div>
+        <div><dt>Disciplines</dt><dd>Branding / Packaging / Social / AI</dd></div>
+        <div><dt>Industries</dt><dd>Cannabis, Lifestyle, Sports, Food, Consumer</dd></div>
       </dl>
     </div>
   </section>
@@ -590,9 +588,9 @@ html.js-motion .rv.in{opacity:1;transform:none}
           </div>
 
           <div class="plate" data-cursor>
-            <img src="work/steph-curry/display-studio.jpg" alt="Canvas Marketing counter display of Stephen Curry trading card sticker packs, with an illustrated Curry header card">
+            <video src="work/steph-curry/launch.mp4" poster="work/steph-curry/launch-poster.jpg" autoplay muted loop playsinline aria-label="Launch video: a Stephen Curry Season 2 sticker pack opened to reveal the illustrated trading card stickers"></video>
             <div class="halftone"></div>
-            <div class="stamp">Counter display — 1/3</div>
+            <div class="stamp">Launch video</div>
           </div>
         </div>
 
@@ -601,6 +599,7 @@ html.js-motion .rv.in{opacity:1;transform:none}
         </button>
         <div class="detail" id="d2" data-open="false">
           <div class="gallery">
+            <img src="work/steph-curry/display-studio.jpg" alt="Canvas Marketing counter display of Stephen Curry trading card sticker packs, with an illustrated Curry header card" loading="lazy">
             <img src="work/steph-curry/season-2-flyers.jpg" alt="Stack of Stephen Curry Season 2 trading card sticker flyers on a card shop counter" loading="lazy">
             <img src="work/steph-curry/display-shop.jpg" alt="Maroon Canvas counter display with an illustrated Curry in a San Francisco jersey, in a card shop" loading="lazy">
           </div>
